@@ -7,10 +7,14 @@ from pathlib import Path
 
 import openai
 
+import _helper_
+
 DATA_DIR = Path.cwd() / "responses"
 SOURCE_FILE = DATA_DIR / "An ec-166799484.json"
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
+
+_helper_.check_key("OPENAI_API_KEY")
 
 with open(SOURCE_FILE, mode="r", encoding="utf-8") as f:
     saved_response = json.load(f)
